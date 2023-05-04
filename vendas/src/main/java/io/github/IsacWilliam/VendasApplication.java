@@ -16,12 +16,11 @@ public class VendasApplication {
         public CommandLineRunner init(@Autowired Clientes clientes){
             return args -> {
                 System.out.println("Salvando clientes");
-                //Alterar o nome aqui
-                clientes.save(new Cliente("Isac"));
+                clientes.save(new Cliente("Fulano"));
                 clientes.save(new Cliente("Outro Cliente"));
 
-                boolean existe = clientes.existsByNome("Isac");
-                System.out.println("Existe um cliente com o nome Isac? " + existe);
+                List<Cliente> result = clientes.encontrarPorNome("Isac");
+                result.forEach(System.out::println);
             };
         }
 
