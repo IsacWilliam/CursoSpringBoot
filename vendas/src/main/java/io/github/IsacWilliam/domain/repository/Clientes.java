@@ -1,4 +1,4 @@
-package io.github.IsacWilliam.domain.repositorio;
+package io.github.IsacWilliam.domain.repository;
 
 import io.github.IsacWilliam.domain.entity.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,4 +21,7 @@ public interface Clientes extends JpaRepository<Cliente, Integer> {
     void deleteBynome (String nome);
 
     boolean existsByNome(String nome);
+
+    @Query(" select c from Cliente c left join fetch c.pedidos where c.id = :id ")
+    Cliente findClienteFetchPedidos(@Param("id") Integer id);
 }
