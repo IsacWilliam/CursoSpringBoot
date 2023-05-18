@@ -34,7 +34,7 @@ public class PedidoServiceImpl implements PedidoService {
     public Pedido salvar(PedidoDTO dto) {
         Integer idCliente = dto.getCliente();
         Cliente cliente = clientesRepository.findById(idCliente)
-                .orElseThrow(() -> new RegraNegocioException("Código de cliente inválido."));
+                .orElseThrow(() -> new RegraNegocioException("Código de cliente inválido: " + idCliente));
 
         Pedido pedido = new Pedido();
         pedido.setTotal(dto.getTotal());
@@ -55,7 +55,7 @@ public class PedidoServiceImpl implements PedidoService {
         return itens.stream().map(dto -> {
             Integer idProduto = dto.getProduto();
             Produto produto = produtosRepository.findById(idProduto).orElseThrow(() ->
-                new RegraNegocioException("Código de produto inválido" + idProduto));
+                new RegraNegocioException("Código de produto inválido: " + idProduto));
 
             ItemPedido itemPedido = new ItemPedido();
             itemPedido.setQuantidade(dto.getQuantidade());
