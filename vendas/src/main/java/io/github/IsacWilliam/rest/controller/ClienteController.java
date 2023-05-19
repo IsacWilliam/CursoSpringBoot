@@ -4,21 +4,18 @@ import io.github.IsacWilliam.domain.entity.Cliente;
 import io.github.IsacWilliam.domain.repository.Clientes;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
+@SuppressWarnings("rawtypes")
 @RestController
 @RequestMapping("/api/clientes")
 public class ClienteController {
 
-    private Clientes clientes;
+    private final Clientes clientes;
 
     public ClienteController(Clientes clientes) {
         this.clientes = clientes;
@@ -57,12 +54,13 @@ public class ClienteController {
         }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado."));
     }
 
+    @SuppressWarnings("rawtypes")
     @GetMapping
-    public List<Cliente> find (Cliente filtro){
+    public List find (Cliente filtro){
         ExampleMatcher matcher = ExampleMatcher.matching()
                 .withIgnoreCase()
                 .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
-        Example example = Example.of(filtro, matcher);
+        Example<Cliente> example = Example.of(filtro, matcher);
         return clientes.findAll(example);
     }
 }

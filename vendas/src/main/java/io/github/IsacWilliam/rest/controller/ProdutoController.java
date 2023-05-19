@@ -12,10 +12,11 @@ import java.util.List;
 
 import static org.springframework.http.HttpStatus.*;
 
+@SuppressWarnings("rawtypes")
 @RestController
 @RequestMapping("/api/produtos")
 public class ProdutoController {
-    private Produtos repository;
+    private final Produtos repository;
 
     public ProdutoController(Produtos repository) {
         this.repository = repository;
@@ -56,12 +57,13 @@ public class ProdutoController {
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado."));
     }
 
+    @SuppressWarnings("rawtypes")
     @GetMapping
-    public List<Produto> find(Produto filtro){
+    public List find(Produto filtro){
         ExampleMatcher matcher = ExampleMatcher
                 .matching().withIgnoreCase()
                 .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
-        Example example = Example.of(filtro, matcher);
+        Example<Produto> example = Example.of(filtro, matcher);
         return repository.findAll(example);
     }
 }
