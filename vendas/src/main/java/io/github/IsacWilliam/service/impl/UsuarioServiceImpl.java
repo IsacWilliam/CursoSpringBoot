@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.StringJoiner;
 
 @Service
 public class UsuarioServiceImpl implements UserDetailsService {
@@ -31,7 +32,7 @@ public class UsuarioServiceImpl implements UserDetailsService {
         return User.builder()
                 .username(usuario.getLogin())
                 .password(usuario.getSenha())
-                .roles()
+                .roles(roles)
                 .build();
     }
 }
