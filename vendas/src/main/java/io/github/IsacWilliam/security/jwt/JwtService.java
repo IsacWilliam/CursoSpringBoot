@@ -1,5 +1,6 @@
-package io.github.IsacWilliam;
+package io.github.IsacWilliam.security.jwt;
 
+import io.github.IsacWilliam.VendasApplication;
 import io.github.IsacWilliam.domain.entity.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
