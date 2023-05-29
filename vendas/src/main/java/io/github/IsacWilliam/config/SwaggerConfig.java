@@ -36,16 +36,16 @@ public class SwaggerConfig {
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
                 .title("Vendas API")
-                .description("Api do projeto de Vendas")
+                .description("Api do Projeto de Vendas")
                 .version("1.0")
                 .contact(contact())
                 .build();
     }
 
     private Contact contact(){
-        return new Contact("Dougllas Sousa"
-                , "http://github.com/cursodsousa",
-                "IsacWilliam@gmail.com");
+        return new Contact("Isac William"
+                , "https://github.com/IsacWilliam/CursoSpringBoot",
+                "IsacWilliam@hotmail.com");
     }
 
     public ApiKey apiKey(){
