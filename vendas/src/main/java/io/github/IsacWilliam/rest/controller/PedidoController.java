@@ -8,7 +8,6 @@ import io.github.IsacWilliam.rest.dto.InformacaoItemPedidoDTO;
 import io.github.IsacWilliam.rest.dto.InformacoesPedidoDTO;
 import io.github.IsacWilliam.rest.dto.PedidoDTO;
 import io.github.IsacWilliam.service.PedidoService;
-import org.springframework.http.HttpStatus;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -74,10 +73,10 @@ public class PedidoController {
         }
         return itens.stream().map(
                 item -> InformacaoItemPedidoDTO
-                        .builder().descricaoProduto(item.getProduto().getDescricao())
-                        .precoUnitario(item.getProduto().getPreco())
-                        .quantidade(item.getQuantidade())
-                        .build()
+                            .builder().descricaoProduto(item.getProduto().getDescricao())
+                            .precoUnitario(item.getProduto().getPreco())
+                            .quantidade(item.getQuantidade())
+                            .build()
         ).collect(Collectors.toList());
     }
 }

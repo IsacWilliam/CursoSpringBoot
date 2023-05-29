@@ -6,7 +6,7 @@ import io.github.IsacWilliam.domain.entity.Pedido;
 import io.github.IsacWilliam.domain.entity.Produto;
 import io.github.IsacWilliam.domain.enums.StatusPedido;
 import io.github.IsacWilliam.domain.repository.Clientes;
-import io.github.IsacWilliam.domain.repository.ItensPedido;
+import io.github.IsacWilliam.domain.repository.ItemsPedido;
 import io.github.IsacWilliam.domain.repository.Pedidos;
 import io.github.IsacWilliam.domain.repository.Produtos;
 import io.github.IsacWilliam.exception.PedidoNaoEncontradoException;
@@ -30,7 +30,7 @@ public class PedidoServiceImpl implements PedidoService {
     private final Pedidos repository;
     private final Clientes clientesRepository;
     private final Produtos produtosRepository;
-    private final ItensPedido itemsPedidoRepository;
+    private final ItemsPedido itemsPedidoRepository;
 
     @Override
     @Transactional
@@ -46,7 +46,7 @@ public class PedidoServiceImpl implements PedidoService {
         pedido.setCliente(cliente);
         pedido.setStatus(StatusPedido.REALIZADO);
 
-        List<ItemPedido> itemsPedido = converterItems(pedido, dto.getItens());
+        List<ItemPedido> itemsPedido = converterItems(pedido, dto.getItems());
         repository.save(pedido);
         itemsPedidoRepository.saveAll(itemsPedido);
         pedido.setItens(itemsPedido);

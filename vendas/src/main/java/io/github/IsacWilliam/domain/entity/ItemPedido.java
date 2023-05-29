@@ -1,5 +1,6 @@
 package io.github.IsacWilliam.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,12 +15,12 @@ import javax.persistence.*;
 public class ItemPedido {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "pedido_id")
+    @JoinColumn(name = "pedido_id")@JsonIgnore
     private Pedido pedido;
 
     @ManyToOne
@@ -28,5 +29,6 @@ public class ItemPedido {
 
     @Column
     private Integer quantidade;
+
 
 }

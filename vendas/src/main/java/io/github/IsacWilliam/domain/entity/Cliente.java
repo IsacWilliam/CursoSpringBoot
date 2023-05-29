@@ -14,12 +14,12 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table (name = "cliente")
+@Table( name = "cliente")
 public class Cliente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column (name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
     @Column(name = "nome", length = 100)
@@ -27,16 +27,17 @@ public class Cliente {
     private String nome;
 
     @Column(name = "cpf", length = 11)
-    @NotEmpty(message = "{campo.cpf.obrigatorio}.")
+    @NotEmpty(message = "{campo.cpf.obrigatorio}")
     @CPF(message = "{campo.cpf.invalido}")
     private String cpf;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+    @OneToMany( mappedBy = "cliente" , fetch = FetchType.LAZY )
     private Set<Pedido> pedidos;
 
-    public Cliente(Integer id, String nome) {
+   public Cliente(Integer id, String nome) {
         this.id = id;
         this.nome = nome;
     }
+
 }

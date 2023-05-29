@@ -1,4 +1,5 @@
 package io.github.IsacWilliam.domain.entity;
+
 import io.github.IsacWilliam.domain.enums.StatusPedido;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,7 +19,7 @@ import java.util.List;
 public class Pedido {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 

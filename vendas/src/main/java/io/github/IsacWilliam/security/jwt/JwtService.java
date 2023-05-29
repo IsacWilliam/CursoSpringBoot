@@ -41,10 +41,10 @@ public class JwtService {
 
     private Claims obterClaims( String token ) throws ExpiredJwtException {
         return Jwts
-                .parser()
-                .setSigningKey(chaveAssinatura)
-                .parseClaimsJws(token)
-                .getBody();
+                 .parser()
+                 .setSigningKey(chaveAssinatura)
+                 .parseClaimsJws(token)
+                 .getBody();
     }
 
     public boolean tokenValido( String token ){
