@@ -2,11 +2,11 @@ package io.github.IsacWilliam.localizacao.service;
 
 import io.github.IsacWilliam.localizacao.domain.entity.Cidade;
 import io.github.IsacWilliam.localizacao.domain.repository.CidadeRepository;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class CidadeService {
@@ -41,5 +41,16 @@ public class CidadeService {
 
     void listarCidades(){
         repository.findAll().forEach(System.out::println);
+    }
+
+    public List<Cidade> filtroDinamico(Cidade cidade){
+
+        ExampleMatcher matcher = ExampleMatcher.
+                matching()
+                .withIgnoreCase()
+                .withStringMatcher(ExampleMatcher.StringMatcher.STARTING);
+
+        Example<Cidade> example = Example.of(cidade, matcher);
+        return repository.findAll(example);
     }
 }
