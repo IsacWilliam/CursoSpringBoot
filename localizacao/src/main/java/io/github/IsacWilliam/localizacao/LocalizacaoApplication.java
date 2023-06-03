@@ -16,7 +16,15 @@ public class LocalizacaoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		listarCidades();
+		listarCidadesPorNome();
+	}
+
+	void listarCidadesPorNome(){
+		cidadeRepository.findByNomeContaining("e").forEach(System.out::println);
+	}
+
+	void listarCidadesPorHabitantes(){
+		cidadeRepository.findByHabitantes(78787900L).forEach(System.out::println);
 	}
 
 	@Transactional
@@ -28,6 +36,7 @@ public class LocalizacaoApplication implements CommandLineRunner {
 	void listarCidades(){
 		cidadeRepository.findAll().forEach(System.out::println);
 	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(LocalizacaoApplication.class, args);
 	}
