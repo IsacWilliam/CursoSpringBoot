@@ -1,6 +1,9 @@
 package io.github.IsacWilliam.localizacao.domain.repository;
 
 import io.github.IsacWilliam.localizacao.domain.entity.Cidade;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -11,12 +14,16 @@ public interface CidadeRepository extends JpaRepository<Cidade, Long> {
     //busca pelo nome correto
     List<Cidade> findByNome(String nome);
 
-    //busca pelo nome like
+    //busca pelo nome like ordenado
     @Query("select c from Cidade c where upper(c.nome) like upper(?1)")
-    List<Cidade> findByNomeLike(String nome);
+    List<Cidade> findByNomeLike(String nome, Sort sort);
 
-    /*busca pelo nome começando com aquele pedaço
-    List<Cidade> findByNomeStartingWith(String nome);*/
+    //busca pelo nome like pginado
+    @Query("select c from Cidade c where upper(c.nome) like upper(?1)")
+    Page<Cidade> findByNomeLike(String nome, Pageable pageable);
+
+    //busca pelo nome começando com aquele pedaço
+    List<Cidade> findByNomeStartingWith(String nome);
 
     //busca pelo nome terminando com aquele pedaço
     List<Cidade> findByNomeEndingWith(String nome);
