@@ -5,6 +5,7 @@
       <list>
         <option value="$PROJECT_DIR$/vendas/pom.xml" />
         <option value="$PROJECT_DIR$/localizacao/pom.xml" />
+        <option value="$PROJECT_DIR$/springdocker/pom.xml" />
       </list>
     </option>
   </component>

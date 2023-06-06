@@ -8,17 +8,20 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="vendas" />
+        <module name="springdocker" />
         <module name="localizacao" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="localizacao" target="11" />
+      <module name="springdocker" target="11" />
       <module name="vendas" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="localizacao" options="-parameters" />
+      <module name="springdocker" options="-parameters" />
       <module name="vendas" options="-parameters" />
     </option>
   </component>

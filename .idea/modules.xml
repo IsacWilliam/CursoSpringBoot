@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Projeto.iml" filepath="$PROJECT_DIR$/.idea/Projeto.iml" />
       <module fileurl="file://$PROJECT_DIR$/localizacao/localizacao.iml" filepath="$PROJECT_DIR$/localizacao/localizacao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springdocker/springdocker.iml" filepath="$PROJECT_DIR$/springdocker/springdocker.iml" />
       <module fileurl="file://$PROJECT_DIR$/vendas/vendas.iml" filepath="$PROJECT_DIR$/vendas/vendas.iml" />
     </modules>
   </component>
